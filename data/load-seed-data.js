@@ -17,7 +17,7 @@ async function run() {
           VALUES ($1, $2, $3)
           RETURNING *;
         `,
-        [quote.quoteText, quote.quoteTextOnly, quote.persons]);
+          [quote.quoteText, quote.quoteTextOnly, quote.persons]);
       })
     );
 
@@ -29,7 +29,8 @@ async function run() {
   finally {
     client.end();
   }
-    
+
 }
+
 
 

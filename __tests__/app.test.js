@@ -2,6 +2,8 @@ import pool from '../lib/utils/pool.js';
 import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
+import Quote from '../lib/models/Quote.js';
+
 
 
 describe('demo routes', () => {
@@ -28,5 +30,29 @@ describe('demo routes', () => {
       quoteTextOnly: 'She\'s dead... Wrapped in plastic.',
       persons: ['Pete Martell']
     });
+  });
+
+  it('finds all quotes via GET', async () => {
+    const quoteOne = await Quote.insert({
+      quoteText: 'Pete Martell: She\'s dead... Wrapped in plastic.',
+      quoteTextOnly: 'She\'s dead... Wrapped in plastic.',
+      persons: ['Pete Martell']
+    });
+
+    const quoteTwo = await Quote.insert({
+      quoteText: 'Pete Martell: She\'s dead... Wrapped in plastic.',
+      quoteTextOnly: 'She\'s dead... Wrapped in plastic.',
+      persons: ['Pete Martell']
+    });
+
+    const quoteThree = await Quote.insert({
+      quoteText: 'Pete Martell: She\'s dead... Wrapped in plastic.',
+      quoteTextOnly: 'She\'s dead... Wrapped in plastic.',
+      persons: ['Pete Martell']
+    });
+
+    const res = await request(app).get('/api/lclquotes');
+
+    expect(res.body).toEqual([quoteOne, quoteTwo, quoteThree]);
   });
 });

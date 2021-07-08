@@ -1,5 +1,5 @@
 
-const quotes = [
+const twinPeaksQuotes = [
   {
     'id': 2,
     'quoteText': 'Pete Martell: She\'s dead... Wrapped in plastic.',
@@ -1559,4 +1559,4 @@ const quotes = [
   }
 ];
 
-export default quotes;
+export default twinPeaksQuotes;

@@ -1,7 +1,7 @@
-DROP TABLE IF EXISTS lclquotes;
-CREATE TABLE lclquotes (
-  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  quote_text TEXT NOT NULL,
-  quote_text_only TEXT NOT NULL,
-  persons TEXT [] NOT NULL
-)
+-- DROP TABLE IF EXISTS lclquotes;
+-- CREATE TABLE lclquotes (
+--   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+--   quote_text TEXT NOT NULL,
+--   quote_text_only TEXT NOT NULL,
+--   persons TEXT [] NOT NULL
+-- )

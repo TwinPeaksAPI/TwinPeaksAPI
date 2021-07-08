@@ -25,7 +25,7 @@ describe('demo routes', () => {
       });
 
     expect(res.body).toEqual({
-      id: '1',
+      id: expect.any(String),
       quoteText: 'Pete Martell: She\'s dead... Wrapped in plastic.',
       quoteTextOnly: 'She\'s dead... Wrapped in plastic.',
       persons: ['Pete Martell']
@@ -33,26 +33,46 @@ describe('demo routes', () => {
   });
 
   it('finds all quotes via GET', async () => {
-    const quoteOne = await Quote.insert({
+    const quoteOne = {
+      id: expect.any(String),
       quoteText: 'Pete Martell: She\'s dead... Wrapped in plastic.',
       quoteTextOnly: 'She\'s dead... Wrapped in plastic.',
       persons: ['Pete Martell']
-    });
+    };
 
-    const quoteTwo = await Quote.insert({
+    const quoteTwo = {
+      id: expect.any(String),
       quoteText: 'Pete Martell: She\'s dead... Wrapped in plastic.',
       quoteTextOnly: 'She\'s dead... Wrapped in plastic.',
       persons: ['Pete Martell']
-    });
+    };
 
-    const quoteThree = await Quote.insert({
+    const quoteThree = {
+      id: expect.any(String),
       quoteText: 'Pete Martell: She\'s dead... Wrapped in plastic.',
       quoteTextOnly: 'She\'s dead... Wrapped in plastic.',
       persons: ['Pete Martell']
-    });
+    };
 
     const res = await request(app).get('/api/lclquotes');
 
-    expect(res.body).toEqual([quoteOne, quoteTwo, quoteThree]);
+    expect(res.body).toEqual(expect.arrayContaining([quoteOne, quoteTwo, quoteThree]));
+  });
+
+
+  it('gets a quote with id via GET', async () => {
+    const quote = {
+      'id': '6',
+      'quoteText': 'Dale Cooper: Who\'s the lady with the log? Sheriff Truman: We call her the Log Lady. Log Lady: Shhhhhhh!',
+      'quoteTextOnly': 'Who\'s the lady with the log? We call her the Log Lady. Shhhhhhh!',
+      'persons': [
+        'Dale Cooper',
+        'Sheriff Truman',
+        'Log Lady'
+      ]
+    };
+    const res = await request(app).get('/api/lclquotes/6');
+    expect(res.body).toEqual(quote);
+
   });
 });

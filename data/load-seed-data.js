@@ -17,19 +17,20 @@ async function run() {
           VALUES ($1, $2, $3)
           RETURNING *;
         `,
-        [quote.quoteText, quote.quoteTextOnly, quote.persons]);
+          [quote.quoteText, quote.quoteTextOnly, quote.persons]);
       })
     );
 
     console.log('seed data load complete');
   }
-  catch(err) {
+  catch (err) {
     console.log(err);
   }
   finally {
     client.end();
   }
-    
+
 }
+
 
 

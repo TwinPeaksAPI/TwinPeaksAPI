@@ -74,4 +74,20 @@ describe('demo routes', () => {
     expect(res.body).toEqual(quote);
 
   });
+
+  it('gets a quote by persons name via GET', async () => {
+    const quote = {
+      'id': '6',
+      'quoteText': 'Dale Cooper: Who\'s the lady with the log? Sheriff Truman: We call her the Log Lady. Log Lady: Shhhhhhh!',
+      'quoteTextOnly': 'Who\'s the lady with the log? We call her the Log Lady. Shhhhhhh!',
+      'persons': [
+        'Dale Cooper',
+        'Sheriff Truman',
+        'Log Lady'
+      ]
+    };
+    const res = await request(app).get('/api/lclquotes/dalecooper');
+    expect(res.body).toEqual(quote);
+  });
+
 });

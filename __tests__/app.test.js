@@ -75,7 +75,7 @@ describe('demo routes', () => {
 
   });
 
-  it('gets a quote by persons name via GET', async () => {
+  it.only('gets a quote by persons name via GET', async () => {
     const quote = {
       'id': '6',
       'quoteText': 'Dale Cooper: Who\'s the lady with the log? Sheriff Truman: We call her the Log Lady. Log Lady: Shhhhhhh!',

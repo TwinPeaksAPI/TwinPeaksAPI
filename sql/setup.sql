@@ -1,16 +1,12 @@
--- DROP TABLE IF EXISTS lclquotes;
--- CREATE TABLE lclquotes (
---   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
---   quote_text TEXT NOT NULL,
---   quote_text_only TEXT NOT NULL,
---   persons TEXT [] NOT NULL
-
+DROP TABLE IF EXISTS lclquotes CASCADE;
+DROP TABLE IF EXISTS persons CASCADE;
+CREATE TABLE lclquotes (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  quote_text TEXT NOT NULL,
+  quote_text_only TEXT NOT NULL,
+  persons_id BIGINT REFERENCES persons(id) NOT NULL
+);
 CREATE TABLE persons (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  id_lclquotes BIGINT REFERENCES lclquotes(persons),
-  names TEXT NOT NULL,
-  character_id INTEGER NOT NULL,
-)
-
-
-
+  name TEXT NOT NULL
+);

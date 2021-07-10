@@ -45,9 +45,6 @@ const twinPeaksPeople = [
     name: 'Audrey Horne'
   },
   {
-    name: 'Bobby Briggs'
-  },
-  {
     name: 'Alice Tremond'
   },  
   {

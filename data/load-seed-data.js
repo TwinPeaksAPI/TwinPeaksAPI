@@ -21,7 +21,6 @@ async function run() {
       })
     );
 
-
     await Promise.all(
       quotes.map(quote => {
         return client.query(`

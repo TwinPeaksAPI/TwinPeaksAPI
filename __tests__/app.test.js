@@ -94,4 +94,13 @@ describe('demo routes', () => {
     expect(res.body).toEqual([quote, quoteTwo, quoteThree, quoteFour, quoteFive]);
   });
 
+  it('can search for quotes by letters in words via GET', async () => {
+    const quote = {
+      id: '26',
+      quoteText: 'Deputy Hawk: One woman can make you fly like an eagle, another can give you the strength of a lion, but only one in the cycle of life can fill your heart with wonder and the wisdom that you have known a singular joy. I wrote that for my girlfriend.',
+      quoteTextOnly: 'One woman can make you fly like an eagle, another can give you the strength of a lion, but only one in the cycle of life can fill your heart with wonder and the wisdom that you have known a singular joy. I wrote that for my girlfriend.',
+    };
+    const res = await request(app).get('/api/lclquotes/search/eagle');
+    expect(res.body).toEqual([quote]);
+  });
 });

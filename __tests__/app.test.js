@@ -2,6 +2,7 @@ import pool from '../lib/utils/pool.js';
 import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
+import { formatName } from '../lib/utils/utils.js';
 
 
 
@@ -90,7 +91,7 @@ describe('demo routes', () => {
       quoteText: 'Laura Palmer: Hello, Agent Cooper. You can go out now. Do you recognize me? Dale Cooper: Are you Laura Palmer? Laura Palmer: I feel like I know her, but sometimes my arms bend back. Dale Cooper: Who are you? Laura Palmer: I am Laura Palmer. Dale Cooper: But Laura Palmer is dead. Laura Palmer: I am dead. Yet I live.',
       quoteTextOnly: 'Hello, Agent Cooper. You can go out now. Do you recognize me? Are you Laura Palmer? I feel like I know her, but sometimes my arms bend back. Who are you? I am Laura Palmer. But Laura Palmer is dead. I am dead. Yet I live.',
     };
-    const res = await request(app).get('/api/characters/Laura Palmer');
+    const res = await request(app).get('/api/characters/pete');
     expect(res.body).toEqual([quote, quoteTwo, quoteThree, quoteFour, quoteFive]);
   });
 
@@ -103,4 +104,10 @@ describe('demo routes', () => {
     const res = await request(app).get('/api/lclquotes/search/eagle');
     expect(res.body).toEqual([quote]);
   });
+
+  it('formats a name to lowercase and then uppercases the first letter', async () => {
+    const actual = formatName('hELLO jAMES');
+    expect(actual).toEqual('Hello James');
+  });
+
 });

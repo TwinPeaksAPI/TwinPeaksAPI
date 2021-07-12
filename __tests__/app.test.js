@@ -7,7 +7,6 @@ import { formatName } from '../lib/utils/utils.js';
 
 
 
-
 describe('demo routes', () => {
 
   const agent = request.agent(app);
@@ -117,16 +116,27 @@ describe('demo routes', () => {
   });
 
   it('grabs a random quote VIA GET', async () => {
-    
-    const res = await request(app).get('/api/random');
-    console.log(res);
-    expect(res.body.length).toEqual({
-      id: expect.any,
-      name: expect.any,
-      quoteText: expect.any,
-      quoteTextOnly: expect.any
-    });
 
+    const res = await request(app).get('/api/random');
+
+    expect(res.body).toMatchObject({
+      id: expect.any(String),
+      name: expect.any(String),
+      quoteText: expect.any(String),
+      quoteTextOnly: expect.any(String)
+    });
+  });
+
+  it('limits number of quotes via GET', async () => {
+
+    const res = await request(app).get('/api/lclquotes/limit/1');
+console.log(res.body);
+    expect(res.body.length).toEqual({
+      id: expect.any(String),
+      name: expect.any(String),
+      quoteText: expect.any(String),
+      quoteTextOnly: expect.any(String)
+    });
   });
 
 });

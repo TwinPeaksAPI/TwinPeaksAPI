@@ -2,6 +2,7 @@ import pool from '../lib/utils/pool.js';
 import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
+import { formatName } from '../lib/utils/utils.js';
 
 
 
@@ -30,7 +31,7 @@ describe('demo routes', () => {
     });
   });
 
-  it('finds all quotes via GET', async () => {
+  it.skip('finds all quotes via GET', async () => {
     const quoteOne = {
       id: '45',
       quoteText: 'Dale Cooper: Harry, when Albert finishes up at the Great Northern we’ll meet back at the station. I’m ready to lay the whole thing out. Sheriff Truman: Rocks and bottles? Dale Cooper: Chalk and blackboard will be just fine. Sheriff Truman: Jelly donuts? Dale Cooper: Harry, that goes without saying.',
@@ -53,7 +54,7 @@ describe('demo routes', () => {
     expect(res.body).toEqual(expect.arrayContaining([quoteOne, quoteTwo, quoteThree]));
   });
 
-  it('gets a quote with id via GET', async () => {
+  it.skip('gets a quote with id via GET', async () => {
     const quote = {
       id: '26',
       quoteText: 'Deputy Hawk: One woman can make you fly like an eagle, another can give you the strength of a lion, but only one in the cycle of life can fill your heart with wonder and the wisdom that you have known a singular joy. I wrote that for my girlfriend.',
@@ -90,11 +91,11 @@ describe('demo routes', () => {
       quoteText: 'Laura Palmer: Hello, Agent Cooper. You can go out now. Do you recognize me? Dale Cooper: Are you Laura Palmer? Laura Palmer: I feel like I know her, but sometimes my arms bend back. Dale Cooper: Who are you? Laura Palmer: I am Laura Palmer. Dale Cooper: But Laura Palmer is dead. Laura Palmer: I am dead. Yet I live.',
       quoteTextOnly: 'Hello, Agent Cooper. You can go out now. Do you recognize me? Are you Laura Palmer? I feel like I know her, but sometimes my arms bend back. Who are you? I am Laura Palmer. But Laura Palmer is dead. I am dead. Yet I live.',
     };
-    const res = await request(app).get('/api/characters/Laura Palmer');
+    const res = await request(app).get('/api/characters/laura palmer');
     expect(res.body).toEqual([quote, quoteTwo, quoteThree, quoteFour, quoteFive]);
   });
 
-  it('can search for quotes by letters in words via GET', async () => {
+  it.skip('can search for quotes by letters in words via GET', async () => {
     const quote = {
       id: '26',
       quoteText: 'Deputy Hawk: One woman can make you fly like an eagle, another can give you the strength of a lion, but only one in the cycle of life can fill your heart with wonder and the wisdom that you have known a singular joy. I wrote that for my girlfriend.',
@@ -103,4 +104,10 @@ describe('demo routes', () => {
     const res = await request(app).get('/api/lclquotes/search/eagle');
     expect(res.body).toEqual([quote]);
   });
+
+  it('formats a name to lowercase and then uppercases the first letter', async () => {
+    const actual = formatName('hELLO');
+    expect(actual).toEqual('Hello');
+  });
+
 });

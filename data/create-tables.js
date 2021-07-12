@@ -2,6 +2,7 @@
 import client from '../lib/client.js';
 import quotes from './twinpeaksquotes.js';
 import people from './people.js';
+import junction from './junction.js';
 
 // async/await needs to run in a function
 run();
@@ -17,8 +18,12 @@ async function run() {
     CREATE TABLE lclquotes (
       id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
       quote_text TEXT NOT NULL,
-      quote_text_only TEXT NOT NULL,
-      persons_id BIGINT REFERENCES persons(id) NOT NULL
+      quote_text_only TEXT NOT NULL
+    );
+    CREATE TABLE quotes_persons_junction (
+      id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+      persons_id SMALLINT NOT NULL,
+      quotes_id SMALLINT NOT NULL
     );
     `);
 
@@ -36,11 +41,23 @@ async function run() {
     await Promise.all(
       quotes.map(quote => {
         return client.query(`
-          INSERT INTO lclquotes (quote_text, quote_text_only, persons_id)
-          VALUES ($1, $2, $3)
+          INSERT INTO lclquotes (quote_text, quote_text_only)
+          VALUES ($1, $2)
           RETURNING *;
         `,
-        [quote.quoteText, quote.quoteTextOnly, quote.personsId]);
+        [quote.quoteText, quote.quoteTextOnly]);
+      })
+    );
+
+    await Promise.all(
+      junction.map(item => {
+        return client.query(`
+          INSERT INTO quotes_persons_junction (persons_id, quotes_id)
+          VALUES ($1, $2)
+          RETURNING *;
+        `,
+        [item.persons_id, item.quotes_id]);
+
       })
     );
 

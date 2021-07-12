@@ -116,16 +116,15 @@ describe('demo routes', () => {
   });
 
   it('grabs a random quote VIA GET', async () => {
-    
-    const res = await request(app).get('/api/random');
-    console.log(res);
-    expect(res.body.length).toEqual({
-      id: expect.any,
-      name: expect.any,
-      quoteText: expect.any,
-      quoteTextOnly: expect.any
-    });
 
+    const res = await request(app).get('/api/random');
+
+    expect(res.body).toMatchObject({
+      id: expect.any(String),
+      name: expect.any(String),
+      quoteText: expect.any(String),
+      quoteTextOnly: expect.any(String)
+    });
   });
 
 });

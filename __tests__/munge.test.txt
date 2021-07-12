@@ -1,0 +1,66 @@
+import twinPeaksQuotes from '../data/twinpeaksquotes.js';
+import { formatQuotes } from '../lib/middleware/munge-utils.js';
+
+describe('API Data Munging', () => {
+
+  const expectedPersons = [
+    {
+      'id': 2,
+      'quoteText': 'Pete Martell: She\'s dead... Wrapped in plastic.',
+      'quoteTextOnly': 'She\'s dead... Wrapped in plastic.',
+      'persons': [
+        'Pete Martell'
+      ]
+    },
+    {
+      'id': 3,
+      'quoteText': 'Log Lady: Welcome to Twin Peaks. My name is Margaret Lanterman. I live in Twin Peaks. I am known as the Log Lady. There is a story behind that. There are many stories in Twin Peaks — some of them are sad, some funny. Some of them are stories of madness, of violence. Some are ordinary. Yet they all have about them a sense of mystery — the mystery of life. Sometimes, the mystery of death. The mystery of the woods. The woods surrounding Twin Peaks. To introduce this story, let me just say it encompasses the All — it is beyond the "Fire", though few would know that meaning. It is a story of many, but begins with one — and I knew her. The one leading to the many is Laura Palmer. Laura is the one.',
+      'quoteTextOnly': 'Welcome to Twin Peaks. My name is Margaret Lanterman. I live in Twin Peaks. I am known as the Log Lady. There is a story behind that. There are many stories in Twin Peaks — some of them are sad, some funny. Some of them are stories of madness, of violence. Some are ordinary. Yet they all have about them a sense of mystery — the mystery of life. Sometimes, the mystery of death. The mystery of the woods. The woods surrounding Twin Peaks. To introduce this story, let me just say it encompasses the All — it is beyond the "Fire", though few would know that meaning. It is a story of many, but begins with one — and I knew her. The one leading to the many is Laura Palmer. Laura is the one.',
+      'persons': [
+        'Log Lady'
+      ]
+    },
+    {
+      'id': 4,
+      'quoteText': 'Dale Cooper: Diane, 7:30 am, February twenty-fourth. Entering town of Twin Peaks. Five miles south of the Canadian border, twelve miles west of the state line. Never seen so many trees in my life. As W.C. Fields would say, I\'d rather be here than Philadelphia. It\'s fifty-four degrees on a slightly overcast day. Weatherman said rain. If you could get paid that kind of money for being wrong sixty percent of the time it\'d beat working. Mileage is 79,345, gauge is on reserve, I\'m riding on fumes here, I\'ve got to tank up when I get into town. Remind me to tell you how much that is. Lunch was $6.31 at the Lamplighter Inn. That\'s on Highway Two near Lewis Fork. That was a tuna fish sandwich on whole wheat, a slice of cherry pie and a cup of coffee. Damn good food. Diane, if you ever get up this way, that cherry pie is worth a stop.',
+      'quoteTextOnly': 'Diane, 7:30 am, February twenty-fourth. Entering town of Twin Peaks. Five miles south of the Canadian border, twelve miles west of the state line. Never seen so many trees in my life. As W.C. Fields would say, I\'d rather be here than Philadelphia. It\'s fifty-four degrees on a slightly overcast day. Weatherman said rain. If you could get paid that kind of money for being wrong sixty percent of the time it\'d beat working. Mileage is 79,345, gauge is on reserve, I\'m riding on fumes here, I\'ve got to tank up when I get into town. Remind me to tell you how much that is. Lunch was $6.31 at the Lamplighter Inn. That\'s on Highway Two near Lewis Fork. That was a tuna fish sandwich on whole wheat, a slice of cherry pie and a cup of coffee. Damn good food. Diane, if you ever get up this way, that cherry pie is worth a stop.',
+      'persons': [
+        'Dale Cooper'
+      ]
+    }
+  ];
+
+
+  it('munges movie data', async () => {
+    // arrange
+    // expected is in variable above
+    // movieData is imported from file
+
+    // act 
+    const output = formatQuotes(twinPeaksQuotes);
+
+
+    // assert
+    expect(output).toEqual([
+      {
+        'name': [
+          'Pete Martell',
+        ],
+      },
+      {
+        'name': [
+          'Log Lady',
+        ],
+      },
+      {
+        'name': [
+          'Dale Cooper',
+        ],
+      }
+
+
+    ]);
+  });
+
+});
+

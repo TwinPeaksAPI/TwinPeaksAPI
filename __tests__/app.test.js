@@ -2,10 +2,6 @@ import pool from '../lib/utils/pool.js';
 import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
-<<<<<<< HEAD
-=======
-
->>>>>>> e545dd4dbfee3e081aef1e19eed868ded012f642
 
 
 describe('demo routes', () => {

@@ -6,6 +6,8 @@ import { formatName } from '../lib/utils/utils.js';
 
 
 
+
+
 describe('demo routes', () => {
 
   const agent = request.agent(app);
@@ -109,6 +111,22 @@ describe('demo routes', () => {
   it('formats a name to lowercase and then uppercases the first letter', async () => {
     const actual = formatName('hELLO');
     expect(actual).toEqual('Hello');
+
+    const actualTwo = formatName('hELLO RFSKJJS');
+    expect(actualTwo).toEqual('Hello Rfskjjs');
+  });
+
+  it('grabs a random quote VIA GET', async () => {
+
+    const res = await request(app).get('/api/random');
+    console.log(res);
+    expect(res.body.length).toEqual({
+      id: expect.any,
+      name: expect.any,
+      quoteText: expect.any,
+      quoteTextOnly: expect.any
+    });
+
   });
 
 });

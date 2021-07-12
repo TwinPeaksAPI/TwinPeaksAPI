@@ -57,7 +57,6 @@ async function run() {
           RETURNING *;
         `,
         [item.persons_id, item.quotes_id]);
-
       })
     );
 

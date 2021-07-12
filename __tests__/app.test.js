@@ -65,7 +65,7 @@ describe('demo routes', () => {
 
   });
 
-  it('gets a quote by persons name via GET', async () => {
+  it.skip('gets a quote by persons name via GET', async () => {
     const quote = {
       id: '17',
       quoteText: '[Cooper\'s dream, sitting in a chair in the red room. The Man from Another Place twitches uncontrollably with his back to Cooper. Cooper stares at a smiling Laura Palmer.] The Man from Another Place: [Claps hands together, speaking in a strangely paced, distorted voice] Let\'s rock! I\'ve got good news. That gum you like is going to come back in style. [about Laura] She\'s my cousin. But doesn\'t she look almost exactly like Laura Palmer? Dale Cooper: But... it is Laura Palmer. Are you Laura Palmer? Laura Palmer: [speaking in a similarly distorted voice] I feel like I know her, but sometimes my arms bend back. The Man from Another Place: She\'s filled with secrets. Where we\'re from, the birds sing a pretty song, and there\'s always music in the air.',
@@ -100,6 +100,7 @@ describe('demo routes', () => {
       id: '26',
       quoteText: 'Deputy Hawk: One woman can make you fly like an eagle, another can give you the strength of a lion, but only one in the cycle of life can fill your heart with wonder and the wisdom that you have known a singular joy. I wrote that for my girlfriend.',
       quoteTextOnly: 'One woman can make you fly like an eagle, another can give you the strength of a lion, but only one in the cycle of life can fill your heart with wonder and the wisdom that you have known a singular joy. I wrote that for my girlfriend.',
+      name: 'Deputy Hawk'
     };
     const res = await request(app).get('/api/lclquotes/search/eagle');
     expect(res.body).toEqual([quote]);

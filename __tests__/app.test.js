@@ -7,7 +7,6 @@ import { formatName } from '../lib/utils/utils.js';
 
 
 
-
 describe('demo routes', () => {
 
   const agent = request.agent(app);
@@ -51,7 +50,7 @@ describe('demo routes', () => {
     };
 
     const res = await request(app)
-      .get('/api/lclquotes');
+      .get('/api/quotes');
 
     expect(res.body).toEqual(expect.arrayContaining([quoteOne, quoteTwo, quoteThree]));
   });
@@ -62,7 +61,7 @@ describe('demo routes', () => {
       quoteText: 'Deputy Hawk: One woman can make you fly like an eagle, another can give you the strength of a lion, but only one in the cycle of life can fill your heart with wonder and the wisdom that you have known a singular joy. I wrote that for my girlfriend.',
       quoteTextOnly: 'One woman can make you fly like an eagle, another can give you the strength of a lion, but only one in the cycle of life can fill your heart with wonder and the wisdom that you have known a singular joy. I wrote that for my girlfriend.',
     };
-    const res = await request(app).get('/api/lclquotes/26');
+    const res = await request(app).get('/api/quotes/26');
     expect(res.body).toEqual(quote);
 
   });
@@ -104,7 +103,7 @@ describe('demo routes', () => {
       quoteTextOnly: 'One woman can make you fly like an eagle, another can give you the strength of a lion, but only one in the cycle of life can fill your heart with wonder and the wisdom that you have known a singular joy. I wrote that for my girlfriend.',
       name: 'Deputy Hawk'
     };
-    const res = await request(app).get('/api/lclquotes/search/eagle');
+    const res = await request(app).get('/api/quotes/search/EaGlE');
     expect(res.body).toEqual([quote]);
   });
 
@@ -118,7 +117,7 @@ describe('demo routes', () => {
 
   it('grabs a random quote VIA GET', async () => {
 
-    const res = await request(app).get('/api/lclquotes/random');
+    const res = await request(app).get('/api/quotes/random');
 
     expect(res.body).toMatchObject({
       id: expect.any(String),
@@ -130,7 +129,7 @@ describe('demo routes', () => {
 
   it('limits number of quotes via GET', async () => {
 
-    const res = await request(app).get('/api/lclquotes/limit/5');
+    const res = await request(app).get('/api/quotes/limit/5');
     expect(res.body.length).toEqual(5);
   });
 

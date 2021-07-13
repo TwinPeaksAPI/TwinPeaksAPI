@@ -117,7 +117,7 @@ describe('demo routes', () => {
 
   it('grabs a random quote VIA GET', async () => {
 
-    const res = await request(app).get('/api/random');
+    const res = await request(app).get('/api/lclquotes/random');
 
     expect(res.body).toMatchObject({
       id: expect.any(String),

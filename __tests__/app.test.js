@@ -70,10 +70,6 @@ describe('demo routes', () => {
     const res = await request(app)
       .get('/api/quotes/26');
 
-
-    const res = await request(app).get('/api/quotes/26');
-
-
     expect(res.body).toEqual(quote);
 
   });

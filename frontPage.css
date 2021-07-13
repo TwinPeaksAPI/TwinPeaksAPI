@@ -5,6 +5,7 @@ html {
   -o-background-size: cover;
   background-size: cover;
 }
+
 header {
   background-color: rgba(14, 13, 10, 0.842);
   padding-top: 2%;
@@ -12,12 +13,14 @@ header {
   margin: 0;
   height: 250px;
 }
+
 @media (min-width: 1300px) {
   body {
     width: 60%;
     margin: 0 auto;
   }
 }
+
 .header-pic {
   border-radius: 25px;
   object-fit: contain;
@@ -25,6 +28,7 @@ header {
   width: 100%;
   box-shadow: 0px 8px 16px 0px greenyellow;
 }
+
 .front-page {
   background-color: transparent;
   padding: 10px;
@@ -32,6 +36,7 @@ header {
   color: white;
   background-color: rgba(14, 13, 10, 0.466);
 }
+
 .front-page h1 {
   color: red;
   border-bottom: black solid 6px;
@@ -39,9 +44,11 @@ header {
   padding-top: 10px;
   padding-left: 5px;
   background-color: rgba(14, 13, 10, 0.466);
+
   border-radius: 25px;
   box-shadow: 0px 8px 16px 0px gray;
   text-align: center;
+
 }
 .front-page span {
   color: white;
@@ -51,6 +58,7 @@ header {
   font-family: Helvetica, sans-serif;
   text-decoration: underline;
 }
+
 .characters {
   background-color: transparent;
   padding: 10px;
@@ -58,6 +66,7 @@ header {
   font-family: Helvetica, sans-serif;
   background-color: rgba(14, 13, 10, 0.466);
 }
+
 .characters h2 {
   color: red;
   border-bottom: black solid 6px;
@@ -65,6 +74,7 @@ header {
   padding-top: 10px;
   padding-left: 5px;
   background-color: rgba(14, 13, 10, 0.466);
+
   border-radius: 25px;
   font-family: Helvetica, sans-serif;
   box-shadow: 0px 8px 16px 0px gray;
@@ -74,4 +84,5 @@ header {
 li {
   margin: 10px;
 }
+
 

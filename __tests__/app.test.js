@@ -33,7 +33,7 @@ describe('demo routes', () => {
     });
   });
 
-  it.skip('finds all quotes via GET', async () => {
+  it('finds all quotes via GET', async () => {
     const quoteOne = {
       id: '45',
       quoteText: 'Dale Cooper: Harry, when Albert finishes up at the Great Northern we’ll meet back at the station. I’m ready to lay the whole thing out. Sheriff Truman: Rocks and bottles? Dale Cooper: Chalk and blackboard will be just fine. Sheriff Truman: Jelly donuts? Dale Cooper: Harry, that goes without saying.',
@@ -56,7 +56,7 @@ describe('demo routes', () => {
     expect(res.body).toEqual(expect.arrayContaining([quoteOne, quoteTwo, quoteThree]));
   });
 
-  it.skip('gets a quote with id via GET', async () => {
+  it('gets a quote with id via GET', async () => {
     const quote = {
       id: '26',
       quoteText: 'Deputy Hawk: One woman can make you fly like an eagle, another can give you the strength of a lion, but only one in the cycle of life can fill your heart with wonder and the wisdom that you have known a singular joy. I wrote that for my girlfriend.',
@@ -67,7 +67,7 @@ describe('demo routes', () => {
 
   });
 
-  it.skip('gets a quote by persons name via GET', async () => {
+  it('gets a quote by persons name via GET', async () => {
     const quote = {
       id: '17',
       quoteText: '[Cooper\'s dream, sitting in a chair in the red room. The Man from Another Place twitches uncontrollably with his back to Cooper. Cooper stares at a smiling Laura Palmer.] The Man from Another Place: [Claps hands together, speaking in a strangely paced, distorted voice] Let\'s rock! I\'ve got good news. That gum you like is going to come back in style. [about Laura] She\'s my cousin. But doesn\'t she look almost exactly like Laura Palmer? Dale Cooper: But... it is Laura Palmer. Are you Laura Palmer? Laura Palmer: [speaking in a similarly distorted voice] I feel like I know her, but sometimes my arms bend back. The Man from Another Place: She\'s filled with secrets. Where we\'re from, the birds sing a pretty song, and there\'s always music in the air.',
@@ -97,7 +97,7 @@ describe('demo routes', () => {
     expect(res.body).toEqual([quote, quoteTwo, quoteThree, quoteFour, quoteFive]);
   });
 
-  it.skip('can search for quotes by letters in words via GET', async () => {
+  it('can search for quotes by letters in words via GET', async () => {
     const quote = {
       id: '26',
       quoteText: 'Deputy Hawk: One woman can make you fly like an eagle, another can give you the strength of a lion, but only one in the cycle of life can fill your heart with wonder and the wisdom that you have known a singular joy. I wrote that for my girlfriend.',
@@ -111,6 +111,27 @@ describe('demo routes', () => {
   it('formats a name to lowercase and then uppercases the first letter', async () => {
     const actual = formatName('hELLO');
     expect(actual).toEqual('Hello');
+
+    const actualTwo = formatName('hELLO RFSKJJS');
+    expect(actualTwo).toEqual('Hello Rfskjjs');
+  });
+
+  it('grabs a random quote VIA GET', async () => {
+
+    const res = await request(app).get('/api/lclquotes/random');
+
+    expect(res.body).toMatchObject({
+      id: expect.any(String),
+      name: expect.any(String),
+      quoteText: expect.any(String),
+      quoteTextOnly: expect.any(String)
+    });
+  });
+
+  it('limits number of quotes via GET', async () => {
+
+    const res = await request(app).get('/api/lclquotes/limit/5');
+    expect(res.body.length).toEqual(5);
   });
 
 });

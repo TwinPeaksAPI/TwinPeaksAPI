@@ -129,14 +129,8 @@ describe('demo routes', () => {
 
   it('limits number of quotes via GET', async () => {
 
-    const res = await request(app).get('/api/lclquotes/limit/1');
-console.log(res.body);
-    expect(res.body.length).toEqual({
-      id: expect.any(String),
-      name: expect.any(String),
-      quoteText: expect.any(String),
-      quoteTextOnly: expect.any(String)
-    });
+    const res = await request(app).get('/api/lclquotes/limit/5');
+    expect(res.body.length).toEqual(5);
   });
 
 });

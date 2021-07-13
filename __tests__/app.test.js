@@ -103,7 +103,7 @@ describe('demo routes', () => {
       quoteTextOnly: 'One woman can make you fly like an eagle, another can give you the strength of a lion, but only one in the cycle of life can fill your heart with wonder and the wisdom that you have known a singular joy. I wrote that for my girlfriend.',
       name: 'Deputy Hawk'
     };
-    const res = await request(app).get('/api/lclquotes/search/eagle');
+    const res = await request(app).get('/api/lclquotes/search/EaGlE');
     expect(res.body).toEqual([quote]);
   });
 
@@ -117,11 +117,7 @@ describe('demo routes', () => {
 
   it('grabs a random quote VIA GET', async () => {
 
-<<<<<<< HEAD
-    const res = await request(app).get('/api/random');
-=======
     const res = await request(app).get('/api/lclquotes/random');
->>>>>>> 7d3d86481150c2f53863fc430f17b275f45b8961
 
     expect(res.body).toMatchObject({
       id: expect.any(String),
@@ -133,19 +129,8 @@ describe('demo routes', () => {
 
   it('limits number of quotes via GET', async () => {
 
-<<<<<<< HEAD
-    const res = await request(app).get('/api/lclquotes/limit/1');
-console.log(res.body);
-    expect(res.body.length).toEqual({
-      id: expect.any(String),
-      name: expect.any(String),
-      quoteText: expect.any(String),
-      quoteTextOnly: expect.any(String)
-    });
-=======
     const res = await request(app).get('/api/lclquotes/limit/5');
     expect(res.body.length).toEqual(5);
->>>>>>> 7d3d86481150c2f53863fc430f17b275f45b8961
   });
 
 });

@@ -53,8 +53,7 @@ describe('demo routes', () => {
     };
 
     const res = await request(app)
-      .get('/api/quotes/')
-      .send({ limit: 10 });
+      .get('/api/quotes/');
 
     expect(res.body).toEqual(expect.arrayContaining([quoteOne, quoteTwo, quoteThree]));
   });
@@ -102,7 +101,7 @@ describe('demo routes', () => {
       quoteTextOnly: 'Hello, Agent Cooper. You can go out now. Do you recognize me? Are you Laura Palmer? I feel like I know her, but sometimes my arms bend back. Who are you? I am Laura Palmer. But Laura Palmer is dead. I am dead. Yet I live.',
     };
 
-    const res = await request(app).get('/api/characters/laura palmer');
+    const res = await request(app).get('/api/quotes/characters/laura palmer');
 
     expect(res.body).toEqual([quote, quoteTwo, quoteThree, quoteFour, quoteFive]);
 
@@ -157,7 +156,7 @@ describe('demo routes', () => {
 
   it('gets random quote by character', async () => {
 
-    const res = await request(app).get('/api/characters/random/Log Lady');
+    const res = await request(app).get('/api/quotes/characters/random/Log Lady');
 
     expect(res.body).toMatchObject({
       id: expect.any(String),
@@ -167,7 +166,59 @@ describe('demo routes', () => {
 
   });
 
+  it('gets a persons info via GET', async () => {
+    const res = await request(app).get('/api/characters/Laura Palmer');
+
+    expect(res.body[0]).toMatchObject({
+      id: expect.any(String),
+      name: expect.any(String),
+      occupation: expect.any(String),
+      age: expect.any(String),
+      eyeColor: expect.any(String),
+      hairColor: expect.any(String),
+      actor: expect.any(String),
+      image: expect.any(String),
+    });
+  });
+
+  it.only('gets all characters info via GET', async () => {
+    const person1 = {
+      id: '1',
+      name: 'Pete Martell',
+      occupation: 'Packard Sawmill Manager',
+      age: '53',
+      hairColor: 'Grey',
+      eyeColor: 'Brown',
+      actor: 'Jack Nance',
+      image: 'https://static.wikia.nocookie.net/twinpeaks/images/3/3d/Pete_Martell.jpg/revision/latest/scale-to-width-down/700?cb=20170822052012'
+    };
+
+    const person2 = {
+      id: '2',
+      name: 'Log Lady',
+      occupation: 'Log Lady',
+      age: '59',
+      hairColor: 'Brown',
+      eyeColor: 'Brown',
+      actor: 'Catherine E. Coulson',
+      image: 'https://static.wikia.nocookie.net/twinpeaks/images/6/68/Logladyreplacement.jpg/revision/latest/scale-to-width-down/700?cb=20160906170235'
+    };
+
+    const person3 = {
+      id: '3',
+      name: 'Dale Cooper',
+      occupation: 'FBI Special Agent, Deputy Twin Peaks Sheriff Department',
+      age: '35',
+      hairColor: 'Brown',
+      eyeColor: 'Hazel',
+      actor: 'Kyle MacLachlan',
+      image: 'https://static.wikia.nocookie.net/twinpeaks/images/3/3a/Cooper_005.jpg/revision/latest/scale-to-width-down/700?cb=20170328023501'
+    };
+
+    const res = await request(app)
+      .get('/api/characters');
+
+    expect(res.body).toEqual(expect.arrayContaining([person1, person2, person3]));
+  });
 });
 
-
-//want to get random quote by each toon

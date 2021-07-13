@@ -13,7 +13,14 @@ async function run() {
     await client.query(` 
     CREATE TABLE persons (
       id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-      name TEXT NOT NULL
+      name TEXT NOT NULL,
+      occupation TEXT,
+      age TEXT,
+      hair_color TEXT,
+      eye_color TEXT,
+      actor TEXT,
+      image TEXT
+      
     );
     CREATE TABLE quotes (
       id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -30,11 +37,11 @@ async function run() {
     await Promise.all(
       people.map(person => {
         return client.query(`
-        INSERT INTO persons (name)
-        VALUES ($1)
+        INSERT INTO persons (name, occupation, age, hair_color, eye_color, actor, image)
+        VALUES ($1, $2, $3, $4, $5, $6, $7)
         RETURNING *;
       `,
-        [person.name]);
+        [person.name, person.occupation, person.age, person.hair_color, person.eye_color, person.actor, person.image]);
       })
     );
 
@@ -61,7 +68,7 @@ async function run() {
     );
 
     console.log('create tables complete');
-  } catch (err) {
+  } catch(err) {
     // problem? let's see the error...
     console.log(err);
   } finally {

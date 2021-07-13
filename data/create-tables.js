@@ -15,7 +15,7 @@ async function run() {
       id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
       name TEXT NOT NULL
     );
-    CREATE TABLE lclquotes (
+    CREATE TABLE quotes (
       id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
       quote_text TEXT NOT NULL,
       quote_text_only TEXT NOT NULL
@@ -41,7 +41,7 @@ async function run() {
     await Promise.all(
       quotes.map(quote => {
         return client.query(`
-          INSERT INTO lclquotes (quote_text, quote_text_only)
+          INSERT INTO quotes (quote_text, quote_text_only)
           VALUES ($1, $2)
           RETURNING *;
         `,

@@ -7,11 +7,11 @@ async function run() {
   try {
     await client.query(`
       DROP TABLE IF EXISTS persons CASCADE;
-      DROP TABLE IF EXISTS lclquotes CASCADE;
+      DROP TABLE IF EXISTS quotes CASCADE;
     `);
 
     console.log('drop tables complete');
-  } catch (err) {
+  } catch(err) {
     console.log(err);
   } finally {
     client.end();

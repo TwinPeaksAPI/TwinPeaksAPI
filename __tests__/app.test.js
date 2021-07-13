@@ -170,7 +170,7 @@ describe('demo routes', () => {
 
     const res = await request(app)
       .get('/api/quotes/limit/5');
-      
+
 
     const res = await request(app).get('/api/quotes/limit/5');
 

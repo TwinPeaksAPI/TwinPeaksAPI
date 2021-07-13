@@ -117,7 +117,11 @@ describe('demo routes', () => {
 
   it('grabs a random quote VIA GET', async () => {
 
+<<<<<<< HEAD
     const res = await request(app).get('/api/random');
+=======
+    const res = await request(app).get('/api/lclquotes/random');
+>>>>>>> 7d3d86481150c2f53863fc430f17b275f45b8961
 
     expect(res.body).toMatchObject({
       id: expect.any(String),
@@ -129,6 +133,7 @@ describe('demo routes', () => {
 
   it('limits number of quotes via GET', async () => {
 
+<<<<<<< HEAD
     const res = await request(app).get('/api/lclquotes/limit/1');
 console.log(res.body);
     expect(res.body.length).toEqual({
@@ -137,6 +142,10 @@ console.log(res.body);
       quoteText: expect.any(String),
       quoteTextOnly: expect.any(String)
     });
+=======
+    const res = await request(app).get('/api/lclquotes/limit/5');
+    expect(res.body.length).toEqual(5);
+>>>>>>> 7d3d86481150c2f53863fc430f17b275f45b8961
   });
 
 });

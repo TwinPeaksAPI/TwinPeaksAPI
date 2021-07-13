@@ -13,11 +13,11 @@ async function run() {
     await Promise.all(
       people.map(person => {
         return client.query(`
-        INSERT INTO persons (name)
-        VALUES ($1)
+        INSERT INTO persons (name, occupation, age, hair_color, eye_color, actor, image)
+        VALUES ($1, $2, $3, $4, $5, $6, $7)
         RETURNING *;
       `,
-        [person.name]);
+          [person.name, person.occupation, person.age, person.hair_color, person.eye_color, person.actor, person.image]);
       })
     );
 
@@ -28,22 +28,13 @@ async function run() {
           VALUES ($1, $2, $3)
           RETURNING *;
         `,
-<<<<<<< HEAD
-        [quote.quoteText, quote.quoteTextOnly, quote.persons]);
-=======
-        [quote.quoteText, quote.quoteTextOnly, quote.personsId]);
->>>>>>> e545dd4dbfee3e081aef1e19eed868ded012f642
+          [quote.quoteText, quote.quoteTextOnly, quote.persons]);
       })
     );
 
     console.log('seed data load complete');
-<<<<<<< HEAD
-    
-  } catch(err) {
-=======
-  }
-  catch(err) {
->>>>>>> e545dd4dbfee3e081aef1e19eed868ded012f642
+
+  } catch (err) {
     console.log(err);
   }
   finally {

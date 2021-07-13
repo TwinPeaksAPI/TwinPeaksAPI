@@ -17,7 +17,7 @@ async function run() {
         VALUES ($1, $2, $3, $4, $5, $6, $7)
         RETURNING *;
       `,
-          [person.name, person.occupation, person.age, person.hair_color, person.eye_color, person.actor, person.image]);
+        [person.name, person.occupation, person.age, person.hair_color, person.eye_color, person.actor, person.image]);
       })
     );
 
@@ -28,13 +28,13 @@ async function run() {
           VALUES ($1, $2, $3)
           RETURNING *;
         `,
-          [quote.quoteText, quote.quoteTextOnly, quote.persons]);
+        [quote.quoteText, quote.quoteTextOnly, quote.persons]);
       })
     );
 
     console.log('seed data load complete');
 
-  } catch (err) {
+  } catch(err) {
     console.log(err);
   }
   finally {

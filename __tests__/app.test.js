@@ -68,7 +68,12 @@ describe('demo routes', () => {
       quoteTextOnly: 'One woman can make you fly like an eagle, another can give you the strength of a lion, but only one in the cycle of life can fill your heart with wonder and the wisdom that you have known a singular joy. I wrote that for my girlfriend.',
     };
 
+    const res = await request(app)
+      .get('/api/quotes/26');
+
+
     const res = await request(app).get('/api/quotes/26');
+
 
     expect(res.body).toEqual(quote);
 
@@ -102,7 +107,12 @@ describe('demo routes', () => {
       quoteTextOnly: 'Hello, Agent Cooper. You can go out now. Do you recognize me? Are you Laura Palmer? I feel like I know her, but sometimes my arms bend back. Who are you? I am Laura Palmer. But Laura Palmer is dead. I am dead. Yet I live.',
     };
 
+    const res = await request(app)
+      .get('/api/characters/laura palmer');
+
+
     const res = await request(app).get('/api/characters/laura palmer');
+
 
     expect(res.body).toEqual([quote, quoteTwo, quoteThree, quoteFour, quoteFive]);
 
@@ -117,7 +127,12 @@ describe('demo routes', () => {
       name: 'Deputy Hawk'
     };
 
+    const res = await request(app)
+      .get('/api/quotes/search/EaGlE');
+
+
     const res = await request(app).get('/api/quotes/search/EaGlE');
+
 
     expect(res.body).toEqual([quote]);
 
@@ -137,7 +152,8 @@ describe('demo routes', () => {
 
   it('grabs a random quote VIA GET', async () => {
 
-    const res = await request(app).get('/api/quotes/random');
+    const res = await request(app)
+      .get('/api/quotes/random');
 
     expect(res.body).toMatchObject({
       id: expect.any(String),
@@ -149,7 +165,13 @@ describe('demo routes', () => {
 
   it('limits number of quotes via GET', async () => {
 
+
+    const res = await request(app)
+      .get('/api/quotes/limit/5');
+      
+
     const res = await request(app).get('/api/quotes/limit/5');
+
 
     expect(res.body.length).toEqual(5);
 
@@ -169,5 +191,3 @@ describe('demo routes', () => {
 
 });
 
-
-//want to get random quote by each toon

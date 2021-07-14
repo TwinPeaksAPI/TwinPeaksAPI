@@ -41,7 +41,7 @@ async function run() {
         VALUES ($1, $2, $3, $4, $5, $6, $7)
         RETURNING *;
       `,
-        [person.name, person.occupation, person.age, person.hair_color, person.eye_color, person.actor, person.image]);
+          [person.name, person.occupation, person.age, person.hair_color, person.eye_color, person.actor, person.image]);
       })
     );
 
@@ -52,7 +52,7 @@ async function run() {
           VALUES ($1, $2)
           RETURNING *;
         `,
-        [quote.quoteText, quote.quoteTextOnly]);
+          [quote.quoteText, quote.quoteTextOnly]);
       })
     );
 
@@ -63,12 +63,12 @@ async function run() {
           VALUES ($1, $2)
           RETURNING *;
         `,
-        [item.persons_id, item.quotes_id]);
+          [item.persons_id, item.quotes_id]);
       })
     );
 
     console.log('create tables complete');
-  } catch(err) {
+  } catch (err) {
     // problem? let's see the error...
     console.log(err);
   } finally {
@@ -76,3 +76,4 @@ async function run() {
     client.end();
   }
 }
+export default run;

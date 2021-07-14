@@ -4,7 +4,7 @@ import request from 'supertest';
 import app from '../lib/app.js';
 import { formatName } from '../lib/utils/utils.js';
 
-describe('demo routes', () => {
+describe('twin peaks API routes', () => {
 
   const agent = request.agent(app);
 

@@ -2,12 +2,12 @@
   "name": "twinpeaks",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --verbose --runInBand --testLocationInResults --setupFiles dotenv/config",
     "test:watch": "npm run test -- --watch",
-    "start": "node -r dotenv/config server.js",
+    "start": "node server.js",
     "start:watch": "nodemon -r dotenv/config server.js",
     "create-tables": "node data/create-tables.js",
     "drop-tables": "node data/drop-tables.js",
@@ -40,6 +40,7 @@
   "dependencies": {
     "agent": "^0.2.1",
     "child_process": "^1.0.2",
+    "connect": "^3.7.0",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "dotenv": "^10.0.0",

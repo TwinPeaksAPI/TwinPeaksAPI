@@ -9,7 +9,7 @@ describe('twin peaks API routes', () => {
 
   const agent = request.agent(app);
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     await setup(pool);
     execSync('npm run load-seed-data');
   });

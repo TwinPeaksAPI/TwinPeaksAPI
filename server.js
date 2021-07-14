@@ -1,7 +1,7 @@
 import app from './lib/app.js';
 import pool from './lib/utils/pool.js';
 
-const PORT = process.env.PORT || 8020;
+const PORT = process.env.PORT || 8030;
 
 // import express from 'express';
 // const app = express();

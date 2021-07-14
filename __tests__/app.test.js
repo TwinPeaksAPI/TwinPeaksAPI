@@ -4,7 +4,7 @@ import request from 'supertest';
 import app from '../lib/app.js';
 import { formatName } from '../lib/utils/utils.js';
 
-describe('demo routes', () => {
+describe('twin peaks API routes', () => {
 
   const agent = request.agent(app);
 
@@ -70,10 +70,6 @@ describe('demo routes', () => {
     const res = await request(app)
       .get('/api/quotes/26');
 
-
-    const res = await request(app).get('/api/quotes/26');
-
-
     expect(res.body).toEqual(quote);
 
   });
@@ -108,14 +104,6 @@ describe('demo routes', () => {
 
     const res = await request(app).get('/api/quotes/characters/laura palmer');
 
-    const res = await request(app)
-      .get('/api/characters/laura palmer');
-
-
-    const res = await request(app).get('/api/characters/laura palmer');
-
-
-
     expect(res.body).toEqual([quote, quoteTwo, quoteThree, quoteFour, quoteFive]);
 
   });
@@ -131,10 +119,6 @@ describe('demo routes', () => {
 
     const res = await request(app)
       .get('/api/quotes/search/EaGlE');
-
-
-    const res = await request(app).get('/api/quotes/search/EaGlE');
-
 
     expect(res.body).toEqual([quote]);
 
@@ -170,10 +154,6 @@ describe('demo routes', () => {
 
     const res = await request(app)
       .get('/api/quotes/limit/5');
-      
-
-    const res = await request(app).get('/api/quotes/limit/5');
-
 
     expect(res.body.length).toEqual(5);
 
@@ -207,7 +187,7 @@ describe('demo routes', () => {
     });
   });
 
-  it.only('gets all characters info via GET', async () => {
+  it('gets all characters info via GET', async () => {
     const person1 = {
       id: '1',
       name: 'Pete Martell',

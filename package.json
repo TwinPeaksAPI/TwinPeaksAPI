@@ -4,9 +4,6 @@
   "description": "",
   "main": "server.js",
   "type": "module",
-  "engines": {
-    "npm": "7.x"
-  },
   "scripts": {
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --verbose --runInBand --testLocationInResults --setupFiles dotenv/config",
     "test:watch": "npm run test -- --watch",
@@ -49,6 +46,7 @@
     "express": "^4.17.1",
     "fs": "^0.0.1-security",
     "heroku": "^7.56.0",
+    "path": "^0.12.7",
     "pg": "^8.6.0",
     "puppeteer": "^10.1.0"
   }

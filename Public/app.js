@@ -10,7 +10,7 @@ import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const reqPath = path.join(__dirname, '../');
+const reqPath = path.join(__dirname, '/');
 
 const app = express();
 
@@ -24,7 +24,7 @@ app.use(quoteController);
 app.use(characterController);
 app.use(notFoundMiddleware);
 app.use(errorMiddleware);
-app.use(express.static(__dirname + './'));
+app.use(express.static(__dirname + '/'));
 app.use('/', (req, res, next) => {
   res.sendFile(__dirname + '/index.html');
   next();

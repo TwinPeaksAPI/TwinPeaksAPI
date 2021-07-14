@@ -6,7 +6,7 @@ const twinPeaksPeople = [
     hair_color: 'Grey',
     eye_color: 'Brown',
     actor: 'Jack Nance',
-    image: 'https://static.wikia.nocookie.net/twinpeaks/images/3/3d/Pete_Martell.jpg/revision/latest/scale-to-width-down/700?cb=20170822052012'
+    image: 'https://static.wikia.nocookie.net/twinpeaks/images/3/3d/Pete_Martell.jpg/revision/latest/scale-to-width-down/625?cb=20170822052012'
   },
   {
     name: 'Log Lady',
@@ -15,7 +15,7 @@ const twinPeaksPeople = [
     hair_color: 'Brown',
     eye_color: 'Brown',
     actor: 'Catherine E. Coulson',
-    image: 'https://static.wikia.nocookie.net/twinpeaks/images/6/68/Logladyreplacement.jpg/revision/latest/scale-to-width-down/700?cb=20160906170235'
+    image: 'https://static.wikia.nocookie.net/twinpeaks/images/6/68/Logladyreplacement.jpg/revision/latest/scale-to-width-down/1000?cb=20160906170235'
   },
   {
     name: 'Dale Cooper',
@@ -24,7 +24,7 @@ const twinPeaksPeople = [
     hair_color: 'Brown',
     eye_color: 'Hazel',
     actor: 'Kyle MacLachlan',
-    image: 'https://static.wikia.nocookie.net/twinpeaks/images/3/3a/Cooper_005.jpg/revision/latest/scale-to-width-down/700?cb=20170328023501'
+    image: 'https://static.wikia.nocookie.net/twinpeaks/images/3/3a/Cooper_005.jpg/revision/latest/scale-to-width-down/1000?cb=20170328023501'
   },
   {
     name: 'Bobby Briggs',
@@ -33,7 +33,7 @@ const twinPeaksPeople = [
     hair_color: 'Brown',
     eye_color: 'Blue',
     actor: 'Dana Ashbrook',
-    image: 'https://static.wikia.nocookie.net/twinpeaks/images/9/98/BobbyHiRes.jpg/revision/latest/scale-to-width-down/700?cb=20161101195815'
+    image: 'https://static.wikia.nocookie.net/twinpeaks/images/9/98/BobbyHiRes.jpg/revision/latest/scale-to-width-down/1000?cb=20161101195815'
   },
   {
     name: 'Norma Jennings',
@@ -60,7 +60,7 @@ const twinPeaksPeople = [
     hair_color: 'Brown',
     eye_color: 'Brown',
     actor: 'Miguel Ferrer',
-    image: 'https://static.wikia.nocookie.net/twinpeaks/images/e/e6/AlbertRosenfeld.jpg/revision/latest/scale-to-width-down/699?cb=20100330010337'
+    image: 'https://static.wikia.nocookie.net/twinpeaks/images/e/e6/AlbertRosenfeld.jpg/revision/latest/scale-to-width-down/623?cb=20100330010337'
   },
   {
     name: 'Laura Palmer',
@@ -325,7 +325,7 @@ const twinPeaksPeople = [
     hair_color: 'Black',
     eye_color: 'Brown',
     actor: 'Ian Buchanan',
-    image: 'https://static.wikia.nocookie.net/twinpeaks/images/f/f5/HankHiRes2.jpg/revision/latest/scale-to-width-down/700?cb=20161101201553'
+    image: 'https://static.wikia.nocookie.net/twinpeaks/images/e/ec/Dick_Tremayne.png/revision/latest?cb=20150511200333'
   },
   {
     name: 'Windom Earle',

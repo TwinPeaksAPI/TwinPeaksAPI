@@ -3,6 +3,7 @@ import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
 import { formatName } from '../lib/utils/utils.js';
+import { execSync } from 'child_process';
 
 describe('twin peaks API routes', () => {
 
@@ -10,7 +11,9 @@ describe('twin peaks API routes', () => {
 
   beforeEach(async () => {
     await setup(pool);
+    execSync('npm run load-seed-data');
   });
+
 
   it.skip('creates a quote via Post', async () => {
 

@@ -104,14 +104,6 @@ describe('demo routes', () => {
 
     const res = await request(app).get('/api/quotes/characters/laura palmer');
 
-    const res = await request(app)
-      .get('/api/characters/laura palmer');
-
-
-    const res = await request(app).get('/api/characters/laura palmer');
-
-
-
     expect(res.body).toEqual([quote, quoteTwo, quoteThree, quoteFour, quoteFive]);
 
   });
@@ -127,10 +119,6 @@ describe('demo routes', () => {
 
     const res = await request(app)
       .get('/api/quotes/search/EaGlE');
-
-
-    const res = await request(app).get('/api/quotes/search/EaGlE');
-
 
     expect(res.body).toEqual([quote]);
 
@@ -166,10 +154,6 @@ describe('demo routes', () => {
 
     const res = await request(app)
       .get('/api/quotes/limit/5');
-      
-
-    const res = await request(app).get('/api/quotes/limit/5');
-
 
     expect(res.body.length).toEqual(5);
 

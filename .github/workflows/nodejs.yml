@@ -17,6 +17,5 @@ jobs:
     - run: npm test
       env:
         CI: true
-        DATABASE_URL: ${{secrets.DATABASE_URL}}
-        PSSGLMODE: ${{secrets.PGSSLMODE}}
+        DATABASE_URL: postgres://alchemy:alchemy@postgres:5432/alchemy
         

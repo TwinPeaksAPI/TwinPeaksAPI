@@ -17,7 +17,7 @@
     "load-seed-data": "node data/load-seed-data.js",
     "setup-db:prod": "heroku run npm run setup-db",
     "recreate-tables": "npm run drop-tables && npm run create-tables",
-    "setup-db": "npm run recreate-tables && npm run load-seed-data",
+    "setup-db": "node -r dotenv/config setup-db.js",
     "setup-heroku": "heroku run npm run setup-db",
     "create-heroku-db": "heroku addons:create heroku-postgresql:hobby-dev",
     "get-dev-db-url": "heroku config:get DEV_DATABASE_URL",
@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "agent": "^0.2.1",
+    "child-process": "^1.0.2",
     "child_process": "^1.0.2",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
@@ -49,6 +50,7 @@
     "express": "^4.17.1",
     "fs": "^0.0.1-security",
     "heroku": "^7.56.0",
+    "path": "^0.12.7",
     "pg": "^8.6.0",
     "puppeteer": "^10.1.0"
   }

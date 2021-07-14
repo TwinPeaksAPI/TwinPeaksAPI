@@ -3,6 +3,7 @@ import client from '../lib/client.js';
 // import our seed data:
 import quotes from './twinpeaksquotes.js';
 import people from './people.js';
+import junction from './junction.js';
 
 run();
 
@@ -24,11 +25,22 @@ async function run() {
     await Promise.all(
       quotes.map(quote => {
         return client.query(`
-          INSERT INTO lclquotes (quote_text, quote_text_only, persons_id)
-          VALUES ($1, $2, $3)
+          INSERT INTO quotes (quote_text, quote_text_only)
+          VALUES ($1, $2)
           RETURNING *;
         `,
-        [quote.quoteText, quote.quoteTextOnly, quote.persons]);
+        [quote.quoteText, quote.quoteTextOnly]);
+      })
+    );
+
+    await Promise.all(
+      junction.map(item => {
+        return client.query(`
+          INSERT INTO quotes_persons_junction (persons_id, quotes_id)
+          VALUES ($1, $2)
+          RETURNING *;
+        `,
+        [item.persons_id, item.quotes_id]);
       })
     );
 

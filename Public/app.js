@@ -1,9 +1,9 @@
 import express from 'express';
 import cors from 'cors';
-import notFoundMiddleware from './middleware/not-found.js';
-import errorMiddleware from './middleware/error.js';
-import quoteController from '../lib/controllers/quotes.js';
-import characterController from '../lib/controllers/characters.js';
+import notFoundMiddleware from '../lib/middleware/not-found.js';
+import errorMiddleware from '../lib/middleware/error.js';
+import quoteController from './controllers/quotes.js';
+import characterController from '../Public/controllers/characters.js';
 import path from 'path';
 
 import { dirname } from 'path';

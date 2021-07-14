@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "agent": "^0.2.1",
+    "child-process": "^1.0.2",
     "child_process": "^1.0.2",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",

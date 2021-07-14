@@ -10,6 +10,7 @@ describe('twin peaks API routes', () => {
 
   beforeEach(async () => {
     await setup(pool);
+    execSync('npm run load-seed-data'); 
   });
 
   it.skip('creates a quote via Post', async () => {

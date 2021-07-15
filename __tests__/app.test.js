@@ -242,7 +242,6 @@ describe('putting in a user Route', () => {
 
     setup(pool);
     execSync('npm run load-seed-data');
-
   });
 
   beforeEach(async () => {
@@ -259,7 +258,7 @@ describe('putting in a user Route', () => {
 
     expect(res.body).toEqual({
       id: expect.any(String),
-      discordId: '1'
+      discordId: '87458435'
     });
   });
 
@@ -324,7 +323,6 @@ describe('putting in a user Route', () => {
           quotesId: 5,
           usersId: 2,
           quoteText: 'Dale Cooper: Diane! I\'m holding in my hand a small box of chocolate bunnies.'
-
         }
       ]);
   });

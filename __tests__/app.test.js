@@ -324,6 +324,7 @@ describe('putting in a user Route', () => {
           quotesId: 5,
           usersId: 2,
           quoteText: 'Dale Cooper: Diane! I\'m holding in my hand a small box of chocolate bunnies.'
+
         }
       ]);
   });

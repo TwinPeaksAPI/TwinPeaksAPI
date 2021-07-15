@@ -4,22 +4,104 @@ import request from 'supertest';
 import app from '../lib/app.js';
 import { formatName } from '../lib/utils/utils.js';
 import { execSync } from 'child_process';
-import { userInfo } from 'os';
-import quotes from '../lib/controllers/quotes.js';
+import UserService from '../lib/services/UserServices.js';
+import { executionAsyncId } from 'async_hooks';
 
 describe('putting in a user Route', () => {
-  beforeEach(async () => {
-    await setup(pool);
+
+  const agent = request.agent(app);
+
+  beforeAll(async () => {
+
+    setup(pool);
     execSync('npm run load-seed-data');
+
   });
 
-  it('create a user with a PUT route', async () => {
-    const res = await request(app).post('/api/users').send({ name: 'Tucker' });
+  beforeEach(async () => {
+
+    const random = Math.floor(Math.random() * 5000);
+
+    await UserService.create({ 
+      email: random + 'truckerhoog@tutanota.com', 
+      username: random + '',
+      password: 'password', 
+    }); 
+  });
+
+  it('create a user with a POST route', async () => {
+
+    const res = await agent
+      .post('/api/auth/signup')
+      .send({ 
+        username: 'Tucker',
+        password: 'sekret',
+        email: 'tuckerhoog@tutanota.com'
+      });
+
     expect(res.body).toEqual({
       id: '1',
       username: 'Tucker',
+      email: 'tuckerhoog@tutanota.com'
     });
   });
+
+  it('logs in in a user via POST', async () => {
+
+    await UserService.create({ 
+      email: 'truckerhoog@tutanota.com', 
+      username: 'Trucker',
+      password: 'password', 
+    }); 
+
+    const res = await agent
+      .post('/api/auth/login')
+      .send({
+        email: 'truckerhoog@tutanota.com',
+        username: 'Freaker',
+        password: 'password'
+      });
+
+    expect(res.body).toEqual({
+      id: '3',
+      email: 'truckerhoog@tutanota.com',
+      username: expect.any(String)
+    });
+
+  });
+
+  it('user selects quote for themselves', async () => {
+
+    const res = await agent
+      .post('/api/users/add/1')
+      .send({ 
+        quotesId: 1
+      });
+
+    expect(res.body).toEqual({
+      id: '1',
+      usersId: 1,
+      quotesId: 1
+    });
+
+  });
+
+  // it('returns all quotes saved by user', async () => {
+
+  //   User.insert({ name: 'Keven' });
+
+  //   User.addQuote({ quotesId: 1 });
+  //   User.addQuote({ quotesId: 2 });
+
+
+  //   const res = await request(app)
+  //     .get('/api/users/1');
+
+  //   expect(res.body).toEqual({
+
+  //   });
+  // });
+
 });
 
 describe('twin peaks API routes', () => {

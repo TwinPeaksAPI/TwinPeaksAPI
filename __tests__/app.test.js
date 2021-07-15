@@ -199,7 +199,7 @@ describe('twin peaks API routes', () => {
       hairColor: 'Grey',
       eyeColor: 'Brown',
       actor: 'Jack Nance',
-      image: 'https://static.wikia.nocookie.net/twinpeaks/images/3/3d/Pete_Martell.jpg/revision/latest/scale-to-width-down/700?cb=20170822052012'
+      image: 'https://static.wikia.nocookie.net/twinpeaks/images/3/3d/Pete_Martell.jpg/revision/latest/scale-to-width-down/625?cb=20170822052012'
     };
 
     const person2 = {
@@ -210,7 +210,7 @@ describe('twin peaks API routes', () => {
       hairColor: 'Brown',
       eyeColor: 'Brown',
       actor: 'Catherine E. Coulson',
-      image: 'https://static.wikia.nocookie.net/twinpeaks/images/6/68/Logladyreplacement.jpg/revision/latest/scale-to-width-down/700?cb=20160906170235'
+      image: 'https://static.wikia.nocookie.net/twinpeaks/images/6/68/Logladyreplacement.jpg/revision/latest/scale-to-width-down/1000?cb=20160906170235'
     };
 
     const person3 = {
@@ -221,13 +221,14 @@ describe('twin peaks API routes', () => {
       hairColor: 'Brown',
       eyeColor: 'Hazel',
       actor: 'Kyle MacLachlan',
-      image: 'https://static.wikia.nocookie.net/twinpeaks/images/3/3a/Cooper_005.jpg/revision/latest/scale-to-width-down/700?cb=20170328023501'
+      image: 'https://static.wikia.nocookie.net/twinpeaks/images/3/3a/Cooper_005.jpg/revision/latest/scale-to-width-down/1000?cb=20170328023501'
     };
 
     const res = await request(app)
       .get('/api/characters');
-
+    // console.log(res.body);
     expect(res.body).toEqual(expect.arrayContaining([person1, person2, person3]));
+
   });
 });
 

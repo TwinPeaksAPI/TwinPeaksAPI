@@ -254,7 +254,7 @@ describe('putting in a user Route', () => {
   it('create a user with a POST route', async () => {
 
     const res = await agent
-      .post('/api/auth/signup/87458435');
+      .post('/api/auth/signup/1');
 
     expect(res.body).toEqual({
       id: expect.any(String),

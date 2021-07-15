@@ -89,9 +89,9 @@ a {
   text-decoration: none;
 }
 
-li .characters {
+.characters ul  {
+  height: 310px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  
+  flex-wrap: wrap;
 }

@@ -4,6 +4,23 @@ import request from 'supertest';
 import app from '../lib/app.js';
 import { formatName } from '../lib/utils/utils.js';
 import { execSync } from 'child_process';
+import { userInfo } from 'os';
+import quotes from '../lib/controllers/quotes.js';
+
+describe('putting in a user Route', () => {
+  beforeEach(async () => {
+    await setup(pool);
+    execSync('npm run load-seed-data');
+  });
+
+  it('create a user with a PUT route', async () => {
+    const res = await request(app).post('/api/users').send({ name: 'Tucker' });
+    expect(res.body).toEqual({
+      id: '1',
+      username: 'Tucker',
+    });
+  });
+});
 
 describe('twin peaks API routes', () => {
 

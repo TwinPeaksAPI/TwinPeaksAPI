@@ -249,53 +249,41 @@ describe('putting in a user Route', () => {
 
     const random = Math.floor(Math.random() * 5000);
 
-    await UserService.create({ 
-      email: random + 'truckerhoog@tutanota.com', 
-      username: random + '',
-      password: 'password', 
-    }); 
+    await UserService.create(random); 
   });
 
   it('create a user with a POST route', async () => {
 
     const res = await agent
-      .post('/api/auth/signup')
-      .send({ 
-        username: 'Tucker',
-        password: 'sekret',
-        email: 'tuckerhoog@tutanota.com'
-      });
+      .post('/api/auth/signup/1');
 
     expect(res.body).toEqual({
       id: expect.any(String),
-      username: 'Tucker',
-      email: 'tuckerhoog@tutanota.com'
+      discordId: '1'
     });
   });
 
-  it('logs in in a user via POST', async () => {
+  // it('logs in in a user via POST', async () => {
 
-    await UserService.create({ 
-      email: 'truckerhoog@tutanota.com', 
-      username: 'Trucker',
-      password: 'password', 
-    }); 
+  //   await UserService.create({ 
+  //     discordId: 2
+  //   }); 
 
-    const res = await agent
-      .post('/api/auth/login')
-      .send({
-        email: 'truckerhoog@tutanota.com',
-        username: 'Freaker',
-        password: 'password'
-      });
+  //   const res = await agent
+  //     .post('/api/auth/login')
+  //     .send({
+  //       email: 'truckerhoog@tutanota.com',
+  //       username: 'Freaker',
+  //       password: 'password'
+  //     });
 
-    expect(res.body).toEqual({
-      id: expect.any(String),
-      email: 'truckerhoog@tutanota.com',
-      username: expect.any(String)
-    });
+  //   expect(res.body).toEqual({
+  //     id: expect.any(String),
+  //     email: 'truckerhoog@tutanota.com',
+  //     username: expect.any(String)
+  //   });
 
-  });
+  // });
 
   it('user add quote for themselves', async () => {
 
@@ -335,7 +323,8 @@ describe('putting in a user Route', () => {
         {
           quotesId: 5,
           usersId: 2,
-          quoteText: "Dale Cooper: Diane! I'm holding in my hand a small box of chocolate bunnies."
+          quoteText: 'Dale Cooper: Diane! I\'m holding in my hand a small box of chocolate bunnies.'
+
         }
       ]);
   });

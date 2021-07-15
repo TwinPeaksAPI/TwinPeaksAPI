@@ -25,8 +25,7 @@ CREATE TABLE quotes_persons_junction (
 );
 CREATE TABLE users (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    username TEXT NOT NULL UNIQUE,
-    email TEXT NOT NULL UNIQUE,
+    discord_id BIGINT NOT NULL,
     password_hash TEXT NOT NULL
 );
 CREATE TABLE users_quotes_junction (

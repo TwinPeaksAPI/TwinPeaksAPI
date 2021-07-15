@@ -242,7 +242,6 @@ describe('putting in a user Route', () => {
 
     setup(pool);
     execSync('npm run load-seed-data');
-
   });
 
   beforeEach(async () => {
@@ -255,11 +254,11 @@ describe('putting in a user Route', () => {
   it('create a user with a POST route', async () => {
 
     const res = await agent
-      .post('/api/auth/signup/1');
+      .post('/api/auth/signup/87458435');
 
     expect(res.body).toEqual({
       id: expect.any(String),
-      discordId: '1'
+      discordId: '87458435'
     });
   });
 

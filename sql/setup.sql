@@ -30,6 +30,6 @@ CREATE TABLE users (
 );
 CREATE TABLE users_quotes_junction (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    quotes_id SMALLINT NOT NULL,
-    users_id SMALLINT NOT NULL
+    quotes_id BIGINT NOT NULL,
+    users_id BIGINT NOT NULL
 );

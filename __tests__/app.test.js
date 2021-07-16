@@ -254,35 +254,27 @@ describe('putting in a user Route', () => {
   it('create a user with a POST route', async () => {
 
     const res = await agent
-      .post('/api/auth/signup/1');
+      .post('/api/auth/signup/397259160380637185');
 
     expect(res.body).toEqual({
       id: expect.any(String),
-      discordId: '87458435'
+      discordId: '397259160380637185'
     });
   });
 
-  // it('logs in in a user via POST', async () => {
+  it('logs in in a user via POST', async () => {
 
-  //   await UserService.create({ 
-  //     discordId: 2
-  //   }); 
+    await UserService.create(1); 
 
-  //   const res = await agent
-  //     .post('/api/auth/login')
-  //     .send({
-  //       email: 'truckerhoog@tutanota.com',
-  //       username: 'Freaker',
-  //       password: 'password'
-  //     });
+    const res = await agent
+      .post('/api/auth/login/1');
 
-  //   expect(res.body).toEqual({
-  //     id: expect.any(String),
-  //     email: 'truckerhoog@tutanota.com',
-  //     username: expect.any(String)
-  //   });
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      discordId: '1'
+    });
 
-  // });
+  });
 
   it('user add quote for themselves', async () => {
 

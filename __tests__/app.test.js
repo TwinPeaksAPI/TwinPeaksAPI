@@ -286,8 +286,8 @@ describe('putting in a user Route', () => {
 
     expect(res.body).toEqual({
       id: '1',
-      usersId: 1,
-      quotesId: 1
+      usersId: '1',
+      quotesId: '1'
     });
 
   });
@@ -307,13 +307,13 @@ describe('putting in a user Route', () => {
     expect(res.body).toEqual(
       [
         {
-          quotesId: 2,
-          usersId: 2,
+          quotesId: '2',
+          usersId: '2',
           quoteText: 'Log Lady: Welcome to Twin Peaks. My name is Margaret Lanterman. I live in Twin Peaks. I am known as the Log Lady. There is a story behind that. There are many stories in Twin Peaks — some of them are sad, some funny. Some of them are stories of madness, of violence. Some are ordinary. Yet they all have about them a sense of mystery — the mystery of life. Sometimes, the mystery of death. The mystery of the woods. The woods surrounding Twin Peaks. To introduce this story, let me just say it encompasses the All — it is beyond the "Fire", though few would know that meaning. It is a story of many, but begins with one — and I knew her. The one leading to the many is Laura Palmer. Laura is the one.'
         },
         {
-          quotesId: 5,
-          usersId: 2,
+          quotesId: '5',
+          usersId: '2',
           quoteText: 'Dale Cooper: Diane! I\'m holding in my hand a small box of chocolate bunnies.'
         }
       ]);

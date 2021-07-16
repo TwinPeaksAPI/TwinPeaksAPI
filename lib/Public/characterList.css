@@ -1,0 +1,35 @@
+html {
+  background: url(./assets/Twin-peaks8.jpeg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.characters {
+  padding: 10px;
+  color: red;
+  font-family: Helvetica, sans-serif;
+  font-size: 30px;
+  background-color: rgba(0, 0, 0, 0.616);
+}
+
+nav {
+  float: right;
+  font-size: 30px;
+  background-color: black;
+}
+
+.navBar {
+  color: red;
+  font-family: Helvetica, sans-serif;
+}
+
+.column {
+  column-count: 3;
+  column-rule: 4px double red;
+  column-fill: balance;
+  column-gap: 10px;
+  column-rule-width: 10px;
+  column-span: all;
+}

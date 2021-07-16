@@ -1,11 +1,11 @@
 ## Owl Cave
 
 ## Created By:
-  # Austin Summerlin @
-  # Kayla Schoorl @
-  # Tucker Hoog @
-  # Taylor Tokaref @
-  # Zach Gaines @
+  # Austin Summerlin * https://github.com/austin-summerlin
+  # Kayla Schoorl * https://github.com/KaylaSchoorl
+  # Tucker Hoog * https://github.com/Grahf0085
+  # Taylor Tokaref * https://github.com/taylor-tokareff
+  # Zach Gaines * https://github.com/ZachMGaines
 
 ## Owl Cave is an API service which allows you to gather your favorite quotes from one of Telveision's most infamous shows Twin Peaks.
 ## Owl Cave can also be invited into a Discord Channel where you can ping it for quotes as well.
@@ -58,4 +58,16 @@
   # Log Lady
 
 # Using the Discord Bot:
-  # Bot Instructions to follow...
+  # To initiate the bot it must invited to a channel
+  # To start the bot in the terminal use the command {node .}
+  # The you can use any of these commands to ping it for a response:
+  # !random - retrieves a random quote
+  # !dale - retrieves a random Dale Cooper Quotes
+  # !loglady - retrieves a random Log Lady Quotes
+  # !laurapalmer - retrieves a random Laura Palmer Quotes
+  # !thegiant - retrieves a random The Giant Quotes
+  # !sherifftruman - retrieves a random Sheriff Truman Quotes
+  # !makeuser - create a user that allows you to save your favorite quotes
+  # !login - login to your user
+  # !addquote - add a quote to your user's saved quotes
+  # !getquotes - get all the quotes you have saved as a user

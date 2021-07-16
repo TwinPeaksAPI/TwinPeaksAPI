@@ -242,57 +242,36 @@ describe('putting in a user Route', () => {
 
     setup(pool);
     execSync('npm run load-seed-data');
-
   });
 
   beforeEach(async () => {
 
     const random = Math.floor(Math.random() * 5000);
 
-    await UserService.create({ 
-      email: random + 'truckerhoog@tutanota.com', 
-      username: random + '',
-      password: 'password', 
-    }); 
+    await UserService.create(random); 
   });
 
   it('create a user with a POST route', async () => {
 
     const res = await agent
-      .post('/api/auth/signup')
-      .send({ 
-        username: 'Tucker',
-        password: 'sekret',
-        email: 'tuckerhoog@tutanota.com'
-      });
+      .post('/api/auth/signup/397259160380637185');
 
     expect(res.body).toEqual({
       id: expect.any(String),
-      username: 'Tucker',
-      email: 'tuckerhoog@tutanota.com'
+      discordId: '397259160380637185'
     });
   });
 
   it('logs in in a user via POST', async () => {
 
-    await UserService.create({ 
-      email: 'truckerhoog@tutanota.com', 
-      username: 'Trucker',
-      password: 'password', 
-    }); 
+    await UserService.create(1); 
 
     const res = await agent
-      .post('/api/auth/login')
-      .send({
-        email: 'truckerhoog@tutanota.com',
-        username: 'Freaker',
-        password: 'password'
-      });
+      .post('/api/auth/login/1');
 
     expect(res.body).toEqual({
       id: expect.any(String),
-      email: 'truckerhoog@tutanota.com',
-      username: expect.any(String)
+      discordId: '1'
     });
 
   });
@@ -307,8 +286,8 @@ describe('putting in a user Route', () => {
 
     expect(res.body).toEqual({
       id: '1',
-      usersId: 1,
-      quotesId: 1
+      usersId: '1',
+      quotesId: '1'
     });
 
   });
@@ -328,14 +307,14 @@ describe('putting in a user Route', () => {
     expect(res.body).toEqual(
       [
         {
-          quotesId: 2,
-          usersId: 2,
+          quotesId: '2',
+          usersId: '2',
           quoteText: 'Log Lady: Welcome to Twin Peaks. My name is Margaret Lanterman. I live in Twin Peaks. I am known as the Log Lady. There is a story behind that. There are many stories in Twin Peaks — some of them are sad, some funny. Some of them are stories of madness, of violence. Some are ordinary. Yet they all have about them a sense of mystery — the mystery of life. Sometimes, the mystery of death. The mystery of the woods. The woods surrounding Twin Peaks. To introduce this story, let me just say it encompasses the All — it is beyond the "Fire", though few would know that meaning. It is a story of many, but begins with one — and I knew her. The one leading to the many is Laura Palmer. Laura is the one.'
         },
         {
-          quotesId: 5,
-          usersId: 2,
-          quoteText: "Dale Cooper: Diane! I'm holding in my hand a small box of chocolate bunnies."
+          quotesId: '5',
+          usersId: '2',
+          quoteText: 'Dale Cooper: Diane! I\'m holding in my hand a small box of chocolate bunnies.'
         }
       ]);
   });

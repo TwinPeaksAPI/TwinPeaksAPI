@@ -6,5 +6,4 @@
   - Taylor
   - Tucker
   - Zach
-  - Keven
 
